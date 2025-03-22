@@ -155,14 +155,14 @@ namespace Apbd_miniProject01
 
         public void showMe()
         {
-            Console.WriteLine(Name + ", " + MaxSpeed + ", " + MaxContainersCapacity + ", " + MaxWeight + "\n");
+            Console.WriteLine("Ship's name: "+ Name + ", Max Speed " + MaxSpeed + " knots, Max Container capacity" + MaxContainersCapacity + ", Max wight " + MaxWeight + " kg\n");
             showContainers();
             Console.WriteLine("--------------------------------------------");
         }
 
         public override string ToString()
         {
-            return Name + ", " + MaxSpeed + ", " + MaxContainersCapacity + ", " + MaxWeight;
+            return "Ship's Name: "+ Name + ", Max Speed " + MaxSpeed + " knots, Max Container capacity" + MaxContainersCapacity + ", Max wight " + MaxWeight + " kg";
         }
     }
     
