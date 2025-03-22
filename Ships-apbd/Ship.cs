@@ -56,7 +56,6 @@ namespace Apbd_miniProject01
                                     currentCargoWeight+= (decimal)accessibleContainers[choice].CargoWeightItself;
                                     containers.Add(counter1++, accessibleContainers[choice]);
                                     accessibleContainers.Remove(choice);
-                                    Console.WriteLine($"{getContainers()[choice]} - added add to a Ship");
                                 }
                                 else
                                 {
