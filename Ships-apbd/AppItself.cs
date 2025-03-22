@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Apbd_miniProject01
 {
@@ -7,35 +8,79 @@ namespace Apbd_miniProject01
         public static void Main(string[] args)
         {
             Console.Title = "Apbd_miniProject01";
-            Console.WriteLine("Welcome into Shipping world!" +
-                              "\n--------------------------" +
-                              "\nType number to move between functionalities" +
-                              "\n--------------------------" +
-                              "\n1. To see all ships" +
-                              "\n2. To see available containers" +
-                              "\n3. To exit the app");
-            int choice = int.Parse(Console.ReadLine());
-            switch (choice)
+            while (true)
             {
-                case 1:
-                    Console.WriteLine("Info: To open ship type its number");
-                    foreach (var ship in Service.getShips())
-                    {
-                        Console.WriteLine(ship.Key + ": " + ship.Value);
-                    }
-                    int choice2 =int.Parse(Console.ReadLine());
-                    
-
-                   
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    Console.WriteLine("Exiting the application...");
-                    Environment.Exit(0);
-                    break;
+                Console.WriteLine("\nWelcome to Shipping World!" +
+                                  "\n--------------------------" +
+                                  "\n1. See all ships" +
+                                  "\n2. Add ship" +
+                                  "\n4. See available containers" +
+                                  "\n4. Create a container" +
+                                  "\n5. Load cargo into a container" +
+                                  "\n6. Load container(s) onto a ship" +
+                                  "\n7. Remove a container from a ship" +
+                                  "\n8. Unload a container" +
+                                  "\n9. Replace a container on a ship" +
+                                  "\n10. Transfer a container between ships" +
+                                  "\n11. Print information about a ship" +
+                                  "\n12. Exit");
+                
+                int choice;
+                if (!int.TryParse(Console.ReadLine(), out choice)) continue;
+                
+                switch (choice)
+                {
+                    case 1:
+                        Service.showAllShips();
+                        break;
+                    case 2:
+                        
+                        Service.addShip();
+                        break;
+                    case 3:
+                        Service.showAvailableContainers();
+                        break;
+                    case 4:
+                        Console.WriteLine("Provide me with the container Type:\n" +
+                                          "1 -> Refrigerated Containers\n" +
+                                          "2 -> Gas Containers\n" +
+                                          "3 -> Liquid Containers");
+                        ContainerType containerType = (ContainerType)int.Parse(Console.ReadLine());
+                        Service.createContainer(containerType);
+                        break;
+                    case 5:
+                        Service.loadCargoINtoContainer();
+                        break;
+                    case 6:
+                        Service.loadContainersOntoShip();
+                        break;
+                    case 7:
+                        Service.removeContainerFromShip();
+                        break;
+                    case 8:
+                        Service.unloadCargoFromContainer();
+                        break;
+                    case 9:
+                        Service.replaceContainerOnShip();
+                        break;
+                    case 10:
+                        Service.transferContainerBetweenShips();
+                        break;
+                    case 11:
+                        Service.PrintShipInfo();
+                        break;
+                    case 12:
+                        Console.WriteLine("Exiting the application...");
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice. Try again.");
+                        break;
+                }
             }
-
         }
+
+        
+
     }
 }

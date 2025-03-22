@@ -4,12 +4,7 @@ using System.Linq;
 
 namespace Apbd_miniProject01
 {
-    public enum ContainerType
-    {
-        R,
-        G,
-        L
-    }
+
     public class Ship
     {
         Dictionary<int, Container> containers = new Dictionary<int, Container>();
@@ -17,13 +12,14 @@ namespace Apbd_miniProject01
         private static int counter0 = Service.getCounter();
         private static int counter1 = 0;
 
-        private string name;
+        private string Name{get;set;}
         public double MaxSpeed { get; set; }
         public int MaxContainersCapacity { get; private set; }
         public decimal MaxWeight { get; private set; }
 
-        public Ship(double maxSpeed, int maxContainersCapacity, decimal maxWeight)
+        public Ship(string name, double maxSpeed, int maxContainersCapacity, decimal maxWeight)
         {
+            Name = name;
             MaxSpeed = maxSpeed;
             MaxContainersCapacity = maxContainersCapacity;
             MaxWeight = maxWeight;
@@ -43,7 +39,7 @@ namespace Apbd_miniProject01
                                       "\nType its number to load a container onto a ship" +
                                       "\nTo load list of containers type their numbers spaceseparated in format <1 2 3 4>" +
                                       "\nYou cannot put twice the same container to the ship");
-                    showAccessibleContainers();
+                    Service.showAvailableContainers();
                     String line = Console.ReadLine();
                     String[] splitted = line.Split(' ');
                     if (splitted.Length <= accessibleContainers.Count)
@@ -76,55 +72,13 @@ namespace Apbd_miniProject01
             }
             
         }
+        
 
-        public void createContainers(ContainerType containerType)
-        {
-            Console.WriteLine("To Load container give me following:" +
-                              "\n Height of the container in cm:");
-            double height = double.Parse(Console.ReadLine());
-            Console.WriteLine("Depth of the container in cm:");
-            double depth = double.Parse(Console.ReadLine());
-            Console.WriteLine("Tare Weight of the container in kg:");
-            double tareWeight = double.Parse(Console.ReadLine());
-            Console.WriteLine("Max payload of the container in kg:");
-            double maxPayload = double.Parse(Console.ReadLine());
-            
-            switch (containerType)
-            {
-                case ContainerType.R:
-                    accessibleContainers.Add(counter0 + 1,new Refrigerated_Container(height, tareWeight, depth, maxPayload));
-                    break;
-                case ContainerType.G:
-                    accessibleContainers.Add(counter0 + 1, new Gas_Containers(height, tareWeight, depth, maxPayload));
-                    break;
-                case ContainerType.L:
-                    accessibleContainers.Add(counter0 + 1, new Liquid_Conteiners(height, tareWeight, depth, maxPayload));
-                    break;
-            }
-        }
-        public void loadCargoINtoContainer()
-        {   
-            Console.WriteLine("To load cargo into a container type its number");
-            showAccessibleContainers();
-            int choice = int.Parse(Console.ReadLine());
-            if (accessibleContainers.ContainsKey(choice))
-            {   
-                Console.WriteLine("Provide me with the weight of the cargo in Kg");
-                double weight = double.Parse(Console.ReadLine());
-                accessibleContainers[choice].loadCargo(weight);
-            }
-            else
-            {
-                Console.WriteLine("Error: no accessible container found");
-            }
-              
-
-        }
 
         public void unloadContainer()
         {
             Console.WriteLine("Info: you can unload container by typing its number from the list bellow");
-            showAccessibleContainers();
+            Service.showAvailableContainers();
             int choice = int.Parse(Console.ReadLine());
             if (accessibleContainers.ContainsKey(choice))
             {
@@ -162,13 +116,6 @@ namespace Apbd_miniProject01
             
         }
 
-        public void showAccessibleContainers()
-        {
-            foreach (var container in accessibleContainers)
-            {
-                Console.WriteLine(container.Key + ": " + container.Value);
-            }
-        }
 
         public void replaceContainers()
         {
@@ -183,7 +130,7 @@ namespace Apbd_miniProject01
             }
             Console.WriteLine("Info: NOw you will see the available containers." +
                               "\nTo choose one type its number");
-            showAccessibleContainers();
+            Service.showAvailableContainers();
             int choice1 = int.Parse(Console.ReadLine());
             if (!accessibleContainers.ContainsKey(choice1))
             {
@@ -193,7 +140,7 @@ namespace Apbd_miniProject01
             (accessibleContainers[choice1], containers[choice0]) = (containers[choice0], accessibleContainers[choice1]);
         }
 
-        public void showContainers()
+        private void showContainers()
         {
             foreach (var container in containers)
             {
@@ -201,9 +148,14 @@ namespace Apbd_miniProject01
             }
         }
 
+        public Dictionary<int, Container> getContainers()
+        {
+            return containers;
+        }
+
         public void showMe()
         {
-            Console.WriteLine(name + ", " + MaxSpeed + ", " + MaxContainersCapacity + ", " + MaxWeight + "\n");
+            Console.WriteLine(Name + ", " + MaxSpeed + ", " + MaxContainersCapacity + ", " + MaxWeight + "\n");
             showContainers();
             Console.WriteLine("--------------------------------------------");
         }
