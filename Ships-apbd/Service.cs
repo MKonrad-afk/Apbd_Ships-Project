@@ -113,109 +113,148 @@ namespace Apbd_miniProject01
 
         public static void loadCargoINtoContainer()
         {   
-            Console.WriteLine("To load cargo into a container type its number");
-            showAvailableContainers();
-            int choice = int.Parse(Console.ReadLine());
-            if (accessibleContainers.ContainsKey(choice))
-            {   
-                Console.WriteLine("Provide me with the weight of the cargo in Kg");
-                double weight = double.Parse(Console.ReadLine());
-                accessibleContainers[choice].loadCargo(weight);
+            if(accessibleContainers.Count > 0){
+                Console.WriteLine("To load cargo into a container type its number");
+                showAvailableContainers();
+                int choice = int.Parse(Console.ReadLine());
+                if (accessibleContainers.ContainsKey(choice))
+                {   
+                    Console.WriteLine("Provide me with the weight of the cargo in Kg");
+                    double weight = double.Parse(Console.ReadLine());
+                    accessibleContainers[choice].loadCargo(weight);
+                }
+                else
+                {
+                    Console.WriteLine("Error: no accessible container found");
+                }
             }
             else
             {
-                Console.WriteLine("Error: no accessible container found");
+                Console.WriteLine("There are no available containers.");
             }
-              
-
         }
 
         public static void unloadCargoFromContainer()
-        {
-            showAllShips();
-            Console.WriteLine("Enter ship number to unload container:");
-            int shipNumber = int.Parse(Console.ReadLine());
-            if (getShips().ContainsKey(shipNumber))
+        {    
+            if (getShips().Count > 0)
             {
-                getShips()[shipNumber].unloadContainer();
+                showAllShips();
+                Console.WriteLine("Enter ship number to unload container:");
+                int shipNumber = int.Parse(Console.ReadLine());
+                if (getShips().ContainsKey(shipNumber))
+                {
+                    getShips()[shipNumber].unloadContainer();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid ship number.");
+                }
             }
             else
             {
-                Console.WriteLine("Invalid ship number.");
+                Console.WriteLine("There are no ships");
             }
         }
         public static void loadContainersOntoShip()
         {
-            showAllShips();
-            Console.WriteLine("Enter ship number to load containers onto:");
-            int shipNumber = int.Parse(Console.ReadLine());
-            if (getShips().ContainsKey(shipNumber))
+            if (getShips().Count > 0)
             {
-                getShips()[shipNumber].addContainerToShip();
+                showAllShips();
+                Console.WriteLine("Enter ship number to load containers onto:");
+                int shipNumber = int.Parse(Console.ReadLine());
+                if (getShips().ContainsKey(shipNumber))
+                {
+                    getShips()[shipNumber].addContainerToShip();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid ship number.");
+                }
             }
             else
             {
-                Console.WriteLine("Invalid ship number.");
+                Console.WriteLine("There are no ships");
             }
         }
 
         public static void removeContainerFromShip()
         {
-            showAllShips();
-            Console.WriteLine("Enter ship number to remove Container:");
-            int shipNumber = int.Parse(Console.ReadLine());
-            if (getShips().ContainsKey(shipNumber))
+            if (getShips().Count > 0)
             {
-                getShips()[shipNumber].removeContainer();
-            }
+                showAllShips();
+                Console.WriteLine("Enter ship number to remove Container:");
+                int shipNumber = int.Parse(Console.ReadLine());
+                if (getShips().ContainsKey(shipNumber))
+                {
+                    getShips()[shipNumber].removeContainer();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid ship number.");
+                }
+            }  
             else
             {
-                Console.WriteLine("Invalid ship number.");
+                Console.WriteLine("There are no ships");
             }
         }
 
 
         public static void replaceContainerOnShip()
         {
-            showAllShips();
-            Console.WriteLine("Enter ship number to replace Containers with available one:");
-            int shipNumber = int.Parse(Console.ReadLine());
-            if (getShips().ContainsKey(shipNumber))
+            if (getShips().Count > 0)
             {
-                getShips()[shipNumber].replaceContainers();
+                showAllShips();
+                Console.WriteLine("Enter ship number to replace Containers with available one:");
+                int shipNumber = int.Parse(Console.ReadLine());
+                if (getShips().ContainsKey(shipNumber))
+                {
+                    getShips()[shipNumber].replaceContainers();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid ship number.");
+                }
             }
             else
             {
-                Console.WriteLine("Invalid ship number.");
+                Console.WriteLine("There are no ships");
             }
         }
 
         public static void transferContainerBetweenShips()
         {
-            showAllShips();
-            Console.WriteLine("Enter source ship number:");
-            int sourceShip = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter destination ship number:");
-            int destShip = int.Parse(Console.ReadLine());
-            if (getShips().ContainsKey(sourceShip) && getShips().ContainsKey(destShip))
+            if (getShips().Count > 0)
             {
-                Console.WriteLine("Enter container number to transfer:");
-                int containerNumber = int.Parse(Console.ReadLine());
-                var source = getShips()[sourceShip];
-                var destination = getShips()[destShip];
-                if (source.getContainers().ContainsKey(containerNumber))
+                showAllShips();
+                Console.WriteLine("Enter source ship number:");
+                int sourceShip = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter destination ship number:");
+                int destShip = int.Parse(Console.ReadLine());
+                if (getShips().ContainsKey(sourceShip) && getShips().ContainsKey(destShip))
                 {
-                    destination.addContainerToShip();
-                    source.removeContainer();
+                    Console.WriteLine("Enter container number to transfer:");
+                    int containerNumber = int.Parse(Console.ReadLine());
+                    var source = getShips()[sourceShip];
+                    var destination = getShips()[destShip];
+                    if (source.getContainers().ContainsKey(containerNumber))
+                    {
+                        destination.addContainerToShip();
+                        source.removeContainer();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Container not found in source ship.");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Container not found in source ship.");
+                    Console.WriteLine("Invalid ship numbers.");
                 }
             }
             else
             {
-                Console.WriteLine("Invalid ship numbers.");
+                Console.WriteLine("There are no ships");
             }
         }
 
