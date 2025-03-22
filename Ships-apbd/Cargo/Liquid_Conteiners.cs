@@ -37,6 +37,12 @@ namespace Apbd_miniProject01
 
         }
 
+        public override void emptyCargo()
+        {
+            base.emptyCargo();
+            CargoType = CargoType.unknown;
+        }
+
         public bool violationOfCargoPayload() 
         {
             if (CargoWeightItself > MaxPayloadKg)

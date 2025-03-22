@@ -10,21 +10,7 @@ namespace Apbd_miniProject01
             : base(heightCm, tareWeightKg, depthCm, maxPayloadKg, ContainerType.G)
         {
         }
-
-        public override void emptyCargo()
-        {
-            if (CargoWeightItself.Equals(0))
-            {
-                Console.WriteLine("Cargo is already empty");
-            }
-            else
-            {
-                MassKg = TareWeightKg;
-                CargoWeightItself = CargoWeightItself * 0.05;
-                
-            }
-        }
-
+        
         public void checkPayload(double massKg)
         {   
             if (massKg > MaxPayloadKg)
@@ -32,6 +18,12 @@ namespace Apbd_miniProject01
                 throw new OverfillException();
             }
             
+        }
+
+        public override void emptyCargo()
+        {
+            base.emptyCargo();
+            Pressure = 0;
         }
 
         public override void loadCargo(double massKg)

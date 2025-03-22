@@ -32,9 +32,20 @@ namespace Apbd_miniProject01
         
         public override string showCargo()
         {
+            if (ProductTy == null)
+            {
+                return base.showCargo() + ": Empty";
+            }
             return base.showCargo() + ": Contains-"+ProductTy + ": Cargo Temperature-" + CargoTemperature;
         }
-        
+
+        public override void emptyCargo()
+        {
+            base.emptyCargo();
+            ProductTy = null;
+            CargoTemperature = 0;
+
+        }
     }
 
 }
