@@ -77,7 +77,7 @@ namespace Apbd_miniProject01
                               "1 -> Gas Containers\n" +
                               "2 -> Liquid Containers");
             int choice2 = int.Parse(Console.ReadLine());
-            if (choice2 == 1 || choice2 == 2 || choice2 == 3){ 
+            if (choice2 == 0 || choice2 == 1 || choice2 == 2){ 
                 ContainerType containerType = (ContainerType)choice2;
                 Console.WriteLine("To create container give me following:" +
                                   "\n Height of the container in cm:");
