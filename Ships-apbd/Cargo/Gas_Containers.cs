@@ -7,7 +7,7 @@ namespace Apbd_miniProject01
         public double Pressure { get; private set; }
 
         public Gas_Containers( double heightCm, double tareWeightKg, double depthCm, double maxPayloadKg ) 
-            : base(heightCm, tareWeightKg, depthCm, maxPayloadKg)
+            : base(heightCm, tareWeightKg, depthCm, maxPayloadKg, ContainerType.G)
         {
         }
 

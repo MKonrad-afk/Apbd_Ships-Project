@@ -18,15 +18,18 @@ namespace Apbd_miniProject01
         public double DepthCm { get; set; }
 
         public SerialNumber SerialNumber { get; }
+
+        private ContainerType ContainerType;
         
-        public Container(double heightCm, double tareWeightKg,double depthCm, double maxPayloadKg)
+        public Container(double heightCm, double tareWeightKg,double depthCm, double maxPayloadKg, ContainerType containerType)
         {
             MassKg = tareWeightKg;
             HeightCm = heightCm;
             TareWeightKg = tareWeightKg;
             DepthCm = depthCm;
             MaxPayloadKg = maxPayloadKg;
-            SerialNumber = SerialNumberRegister.generateSerialNUmber();
+            ContainerType = containerType;
+            SerialNumber = SerialNumberRegister.generateSerialNUmber(containerType);
             Console.WriteLine($"You have created -> Serial Number: {SerialNumber}");
         }
         // Emptying the cargo
@@ -61,12 +64,12 @@ namespace Apbd_miniProject01
 
         public override string ToString()
         {
-            return "> Serial Nubmer- " + SerialNumber;
+            return "> Serial Nubmer- " + SerialNumber + ", Container Type " + ContainerType;
         }
 
         public virtual string showCargo()
         {
-            return  "> Serial Number- " + SerialNumber + " : Cargo Itself" + CargoWeightItself + " kg, : Tare Weight- " +TareWeightKg +" kg, Height- "+ HeightCm + " cm, : Depth- " + DepthCm + " cm,: Max Pay Load- " + MaxPayloadKg+ " kg : Current mass- " + MassKg +" kg";
+            return  "> Serial Number- " + SerialNumber + ": Container Type" + ContainerType +" : Cargo Itself" + CargoWeightItself + " kg, : Tare Weight- " +TareWeightKg +" kg, Height- "+ HeightCm + " cm, : Depth- " + DepthCm + " cm,: Max Pay Load- " + MaxPayloadKg+ " kg : Current mass- " + MassKg +" kg";
         }
     }
 

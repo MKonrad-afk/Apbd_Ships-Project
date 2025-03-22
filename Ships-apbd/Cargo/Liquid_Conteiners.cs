@@ -8,37 +8,45 @@ namespace Apbd_miniProject01
         CargoType CargoType {get;set; }
 
         public Liquid_Conteiners(double heightCm, double tareWeightKg, double depthCm, double maxPayloadKg) 
-            : base(heightCm, tareWeightKg, depthCm, maxPayloadKg)
+            : base(heightCm, tareWeightKg, depthCm, maxPayloadKg, ContainerType.L)
         {
-            if (CargoType == CargoType.hazardous)
-            {
-                MaxPayloadKg = maxPayloadKg / 2;
-               
-            }
-            else
-            {
-                MaxPayloadKg = maxPayloadKg * 0.9;
-            }
+            CargoType = CargoType.unknown;
         }
 
         public override void loadCargo(double massKg)
         {
             base.loadCargo(massKg);
-            violationOfCargoPayload();
-            Console.WriteLine("Product type of the container (choose between 0: hazardous, 1: ordinary):");
-            CargoType = (CargoType)int.Parse(Console.ReadLine());
+            if (violationOfCargoPayload())
+            {
+                Console.WriteLine("Product type of the container (choose between 0: hazardous, 1: ordinary):");
+                CargoType = (CargoType)int.Parse(Console.ReadLine());
+                if (CargoType == CargoType.hazardous)
+                {
+                    MaxPayloadKg /= 2;
+               
+                }
+                else if (CargoType == CargoType.ordinary)
+                {
+                    MaxPayloadKg *= 0.9;
+                }
+            }
+            else
+            {
+                Console.WriteLine("I cannot load this cargo - it is too heavy!");
+            }
 
         }
 
-        public void violationOfCargoPayload() 
+        public bool violationOfCargoPayload() 
         {
             if (CargoWeightItself > MaxPayloadKg)
             {
                 Console.WriteLine($"Dangerous operation reported! Container Serial Number: {SerialNumber}\n" +
                                   $"You want to fiilled Cargo with Violation of the rules - Cargo weight too big!\n" +
                                   $"Max Payload Kg: {MaxPayloadKg}");
-                return;
+                return false;
             }
+            return true;
         }
 
         public void NotifyHazard()
@@ -48,11 +56,12 @@ namespace Apbd_miniProject01
         
         public override string ToString()
         {
-            return base.ToString() +$", CargoType: {CargoType} - Liquid Container";
+            return base.ToString() +": Cargo Type-" + CargoType;
         }
         
         public override string showCargo()
-        {
+        {   
+            
             return base.showCargo() + ": Cargo Type-" + CargoType;
         }
     }

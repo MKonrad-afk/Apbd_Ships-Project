@@ -8,11 +8,10 @@ namespace Apbd_miniProject01
         private char SecondPart;
         private int ThirdPart;
 
-        public void createSerialNumber()
+        public void createSerialNumber(ContainerType containerType)
         {
             FirstPart = "KON";
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            SecondPart = chars[new Random().Next(chars.Length)];
+            SecondPart = containerType.ToString()[0];
             ThirdPart = new Random().Next(0, 9);
         }
 

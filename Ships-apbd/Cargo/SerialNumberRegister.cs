@@ -6,7 +6,7 @@ namespace Apbd_miniProject01
     {
         static List<SerialNumber> serialNumbers = new List<SerialNumber>(); 
 
-        public static SerialNumber generateSerialNUmber()
+        public static SerialNumber generateSerialNUmber(ContainerType containerType)
         {
             SerialNumber tempSerialNumber;
             bool isUnique;
@@ -14,7 +14,7 @@ namespace Apbd_miniProject01
             do
             {
                 tempSerialNumber = new SerialNumber();
-                tempSerialNumber.createSerialNumber();
+                tempSerialNumber.createSerialNumber(containerType);
                 isUnique = true;
 
                 foreach (var number in serialNumbers)

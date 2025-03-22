@@ -65,6 +65,7 @@ namespace Apbd_miniProject01
             else
             {
                 Console.WriteLine("There are no ships");
+                
             }
         }
         
@@ -77,8 +78,8 @@ namespace Apbd_miniProject01
                               "3 -> Liquid Containers");
             int choice2 = int.Parse(Console.ReadLine());
             if (choice2 == 1 || choice2 == 2 || choice2 == 3){ 
-                ContainerType containerType = (ContainerType)int.Parse(Console.ReadLine());
-                Console.WriteLine("To Load container give me following:" +
+                ContainerType containerType = (ContainerType)choice2;
+                Console.WriteLine("To create container give me following:" +
                                   "\n Height of the container in cm:");
                 double height = double.Parse(Console.ReadLine());
                 Console.WriteLine("Depth of the container in cm:");

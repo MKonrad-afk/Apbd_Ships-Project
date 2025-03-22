@@ -9,7 +9,8 @@ namespace Apbd_miniProject01
         public ProductType ProductTy;
         public int CargoTemperature;
 
-        public Refrigerated_Container(double heightCm, double tareWeightKg, double depthCm, double maxPayloadKg) : base(heightCm, tareWeightKg, depthCm, maxPayloadKg)
+        public Refrigerated_Container(double heightCm, double tareWeightKg, double depthCm, double maxPayloadKg) 
+            : base(heightCm, tareWeightKg, depthCm, maxPayloadKg, ContainerType.R)
         {
         }
 
