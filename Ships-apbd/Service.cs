@@ -215,7 +215,56 @@ namespace Apbd_miniProject01
             }
         }
 
-        public static void PrintShipInfo()
+        public static void printContainerINfo()
+        {
+            Console.WriteLine("Type which info you want to get:" +
+                              "\n1. Container from the ship" +
+                              "\n2. Container from available containers");
+            int choice = int.Parse(Console.ReadLine());
+            if (choice == 1)
+            {
+                showAllShips();
+                Console.WriteLine("Enter ship number to view details about the container:");
+                int shipNumber = int.Parse(Console.ReadLine());
+                if (getShips().ContainsKey(shipNumber))
+                {
+                    Console.WriteLine("Enter container number to view it:");
+                    getShips()[shipNumber].showContainers();
+                    int containerNumber = int.Parse(Console.ReadLine());
+                    if (getShips()[shipNumber].getContainers().ContainsKey(containerNumber))
+                    {
+                        getShips()[shipNumber].getContainers()[containerNumber].showCargo();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid container number.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid ship number.");
+                }
+            }
+            else if (choice == 2)
+            {
+                Console.WriteLine("Enter container number to view it:");
+                showAvailableContainers();
+                int containerNumber = int.Parse(Console.ReadLine());
+                if (getAccessibleContainers().ContainsKey(containerNumber))
+                {
+                    getAccessibleContainers()[containerNumber].showCargo();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid container number.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid choice.");
+            }
+        }
+        public static void printShipInfo()
         {
             if (accessibleContainers.Count > 0)
             {

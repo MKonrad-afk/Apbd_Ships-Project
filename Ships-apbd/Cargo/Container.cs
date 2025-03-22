@@ -61,7 +61,12 @@ namespace Apbd_miniProject01
 
         public override string ToString()
         {
-            return "> " + SerialNumber;
+            return "> Serial Nubmer- " + SerialNumber;
+        }
+
+        public virtual string showCargo()
+        {
+            return  "> Serial Number- " + SerialNumber + " : Cargo Itself" + CargoWeightItself + " kg, : Tare Weight- " +TareWeightKg +" kg, Height- "+ HeightCm + " cm, : Depth- " + DepthCm + " cm,: Max Pay Load- " + MaxPayloadKg+ " kg : Current mass- " + MassKg +" kg";
         }
     }
 

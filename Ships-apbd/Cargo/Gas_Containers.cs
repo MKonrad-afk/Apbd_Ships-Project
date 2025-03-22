@@ -26,25 +26,34 @@ namespace Apbd_miniProject01
         }
 
         public void checkPayload()
-        {
+        {   
             if (MassKg > MaxPayloadKg)
             {
                 throw new OverfillException();
             }
-
             
         }
 
         public override void loadCargo(double massKg)
         {
             base.loadCargo(massKg);
+            checkPayload();
             Console.WriteLine("Pressure in atmosphere:");
             Pressure = double.Parse(Console.ReadLine());
+            if (Pressure > 1000)
+            {
+                NotifyHazard();
+            }
         }
 
         public void NotifyHazard()
         {
             Console.WriteLine($"Hazardous event reported! Container Serial Number: {SerialNumber}");
+        }
+
+        public override string showCargo()
+        {
+           return base.showCargo() + ": Pressure-" + Pressure +" atmosphere";
         }
     }
 }

@@ -140,7 +140,7 @@ namespace Apbd_miniProject01
             (accessibleContainers[choice1], containers[choice0]) = (containers[choice0], accessibleContainers[choice1]);
         }
 
-        private void showContainers()
+        public void showContainers()
         {
             foreach (var container in containers)
             {

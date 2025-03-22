@@ -68,9 +68,10 @@ namespace Apbd_miniProject01
                         Service.transferContainerBetweenShips();
                         break;
                     case 11:
-                        Service.PrintShipInfo();
+                        Service.printShipInfo();
                         break;
                     case 12:
+                        Service.printContainerINfo();
                         break;
                     case 13:
                         Console.WriteLine("Exiting the application...");
