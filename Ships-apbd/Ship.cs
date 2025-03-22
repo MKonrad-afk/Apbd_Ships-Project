@@ -155,7 +155,8 @@ namespace Apbd_miniProject01
 
         public void showMe()
         {
-            Console.WriteLine("Ship's name: "+ Name + ", Max Speed " + MaxSpeed + " knots, Max Container capacity" + MaxContainersCapacity + ", Max wight " + MaxWeight + " kg\n");
+            Console.WriteLine("Ship's name: "+ Name + ", Max Speed " + MaxSpeed + " knots, Max Container capacity" + MaxContainersCapacity + ", Max wight " + MaxWeight + " kg\n" +
+                              "Container:\n");
             showContainers();
             Console.WriteLine("--------------------------------------------");
         }
