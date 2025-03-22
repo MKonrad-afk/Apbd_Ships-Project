@@ -323,7 +323,7 @@ namespace Apbd_miniProject01
         }
         public static void printShipInfo()
         {
-            if (accessibleContainers.Count > 0)
+            if (getShips().Count > 0)
             {
                 showAllShips();
                 Console.WriteLine("Enter ship number to view details:");
