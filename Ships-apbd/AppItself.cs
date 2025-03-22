@@ -8,13 +8,14 @@ namespace Apbd_miniProject01
         public static void Main(string[] args)
         {
             Console.Title = "Apbd_miniProject01";
+
+            Console.WriteLine("\nWelcome to Shipping World!");
             while (true)
             {
-                Console.WriteLine("\nWelcome to Shipping World!" +
-                                  "\n--------------------------" +
+                Console.WriteLine("\n--------------------------" +
                                   "\n1. See all ships" +
                                   "\n2. Add ship" +
-                                  "\n4. See available containers" +
+                                  "\n3. See available containers" +
                                   "\n4. Create a container" +
                                   "\n5. Load cargo into a container" +
                                   "\n6. Load container(s) onto a ship" +
@@ -23,7 +24,8 @@ namespace Apbd_miniProject01
                                   "\n9. Replace a container on a ship" +
                                   "\n10. Transfer a container between ships" +
                                   "\n11. Print information about a ship" +
-                                  "\n12. Exit");
+                                  "\n12. Exit"+
+                                  "\n--------------------------");
                 
                 int choice;
                 if (!int.TryParse(Console.ReadLine(), out choice)) continue;

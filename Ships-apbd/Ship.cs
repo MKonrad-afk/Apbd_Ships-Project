@@ -159,6 +159,11 @@ namespace Apbd_miniProject01
             showContainers();
             Console.WriteLine("--------------------------------------------");
         }
+
+        public override string ToString()
+        {
+            return Name + ", " + MaxSpeed + ", " + MaxContainersCapacity + ", " + MaxWeight;
+        }
     }
     
 }

@@ -15,11 +15,10 @@ namespace Apbd_miniProject01
             SecondPart = chars[new Random().Next(chars.Length)];
             ThirdPart = new Random().Next(0, 9);
         }
-        
-        public string getSerialNumber()
+
+        public override string ToString()
         {
             return FirstPart +"-" + SecondPart+"-" + ThirdPart;
         }
-            
     }
 }

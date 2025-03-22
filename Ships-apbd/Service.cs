@@ -28,26 +28,33 @@ namespace Apbd_miniProject01
         { 
             Console.WriteLine("Enter ship name: ");
             string shipName = Console.ReadLine();
-            Console.WriteLine("Enter Max Speed of the ship: ");
+            Console.WriteLine("Enter Max Speed of the ship in knots: ");
             double maxSpeed = double.Parse(Console.ReadLine());
-            Console.WriteLine("Enter Max Containercapacity of the ship: ");
+            Console.WriteLine("Enter Max Container capacity of the ship : ");
             int containerCapacity = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter Max Weight of the ship: ");
+            Console.WriteLine("Enter Max Weight of the ship in kg: ");
             decimal maxWeight = decimal.Parse(Console.ReadLine());
             Ship ship =  new Ship(shipName, maxSpeed,containerCapacity, maxWeight);
             ships.Add(counter2++, ship);
         }
         public static void showAvailableContainers()
         {
-            foreach (var container in getAccessibleContainers())
+            if (accessibleContainers.Count > 0)
             {
-                Console.WriteLine(container.Key + ": " + container.Value);
+                foreach (var container in getAccessibleContainers())
+                {
+                    Console.WriteLine(container.Key + ": " + container.Value);
+                }
+            }
+            else
+            {
+                Console.WriteLine("There are no available containers.");
             }
         }
         
         public static void showAllShips()
         {    
-            if(Service.getShips().Count != 0){
+            if(getShips().Count != 0){
                 foreach (var ship in getShips())
                 {
                     Console.WriteLine(ship.Key + ": " + ship.Value);
@@ -72,19 +79,17 @@ namespace Apbd_miniProject01
             double tareWeight = double.Parse(Console.ReadLine());
             Console.WriteLine("Max payload of the container in kg:");
             double maxPayload = double.Parse(Console.ReadLine());
-
-            var counter0 = Service.getCounter();
             
             switch (containerType)
             {
                 case ContainerType.R:
-                    Service.getAccessibleContainers().Add(counter0 + 1,new Refrigerated_Container(height, tareWeight, depth, maxPayload));
+                    getAccessibleContainers().Add(counter + 1,new Refrigerated_Container(height, tareWeight, depth, maxPayload));
                     break;
                 case ContainerType.G:
-                    Service.getAccessibleContainers().Add(counter0 + 1, new Gas_Containers(height, tareWeight, depth, maxPayload));
+                    getAccessibleContainers().Add(counter + 1, new Gas_Containers(height, tareWeight, depth, maxPayload));
                     break;
                 case ContainerType.L:
-                    Service.getAccessibleContainers().Add(counter0 + 1, new Liquid_Conteiners(height, tareWeight, depth, maxPayload));
+                    getAccessibleContainers().Add(counter + 1, new Liquid_Conteiners(height, tareWeight, depth, maxPayload));
                     break;
             }
         }

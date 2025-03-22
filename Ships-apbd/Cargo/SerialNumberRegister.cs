@@ -4,23 +4,31 @@ namespace Apbd_miniProject01
 {
     public static class SerialNumberRegister
     {
-        static List<SerialNumber> serialNumbers;
-        
-        
+        static List<SerialNumber> serialNumbers = new List<SerialNumber>(); 
+
         public static SerialNumber generateSerialNUmber()
         {
-            SerialNumber tempSerialNumber = new SerialNumber();
-            tempSerialNumber.createSerialNumber();
-            foreach (var number in serialNumbers)
+            SerialNumber tempSerialNumber;
+            bool isUnique;
+
+            do
             {
-                if (number.getSerialNumber().Equals(tempSerialNumber.getSerialNumber()))
+                tempSerialNumber = new SerialNumber();
+                tempSerialNumber.createSerialNumber();
+                isUnique = true;
+
+                foreach (var number in serialNumbers)
                 {
-                    generateSerialNUmber();
+                    if (number.Equals(tempSerialNumber))
+                    {
+                        isUnique = false;
+                        break; 
+                    }
                 }
-            }
+            } while (!isUnique); 
+
             serialNumbers.Add(tempSerialNumber);
             return tempSerialNumber;
         }
     }
-    
 }
