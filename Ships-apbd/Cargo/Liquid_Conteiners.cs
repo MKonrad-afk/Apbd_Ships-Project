@@ -18,7 +18,7 @@ namespace Apbd_miniProject01
             base.loadCargo(massKg);
             if (violationOfCargoPayload())
             {
-                Console.WriteLine("Product type of the container (choose between 0: hazardous, 1: ordinary):");
+                Console.WriteLine("Product type of the container (choose between 0 -> hazardous, 1 -> ordinary):");
                 CargoType = (CargoType)int.Parse(Console.ReadLine());
                 if (CargoType == CargoType.hazardous)
                 {

@@ -73,9 +73,9 @@ namespace Apbd_miniProject01
         public static void createContainer()
         {
             Console.WriteLine("Provide me with the container Type:\n" +
-                              "1 -> Refrigerated Containers\n" +
-                              "2 -> Gas Containers\n" +
-                              "3 -> Liquid Containers");
+                              "0 -> Refrigerated Containers\n" +
+                              "1 -> Gas Containers\n" +
+                              "2 -> Liquid Containers");
             int choice2 = int.Parse(Console.ReadLine());
             if (choice2 == 1 || choice2 == 2 || choice2 == 3){ 
                 ContainerType containerType = (ContainerType)choice2;
