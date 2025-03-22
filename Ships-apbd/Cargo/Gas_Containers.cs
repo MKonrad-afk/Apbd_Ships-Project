@@ -25,9 +25,9 @@ namespace Apbd_miniProject01
             }
         }
 
-        public void checkPayload()
+        public void checkPayload(double massKg)
         {   
-            if (MassKg > MaxPayloadKg)
+            if (massKg > MaxPayloadKg)
             {
                 throw new OverfillException();
             }
@@ -37,7 +37,7 @@ namespace Apbd_miniProject01
         public override void loadCargo(double massKg)
         {
             base.loadCargo(massKg);
-            checkPayload();
+            checkPayload(massKg);
             Console.WriteLine("Pressure in atmosphere:");
             Pressure = double.Parse(Console.ReadLine());
             if (Pressure > 1000)

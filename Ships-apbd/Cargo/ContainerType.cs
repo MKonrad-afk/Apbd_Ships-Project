@@ -9,6 +9,4 @@ public enum ContainerType
     G,
     [EnumMember(Value = "Liquid Container")]
     L
-    
-    
 }
