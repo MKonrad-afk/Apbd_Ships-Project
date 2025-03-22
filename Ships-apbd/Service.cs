@@ -92,13 +92,16 @@ namespace Apbd_miniProject01
                 switch (containerType)
                 {
                     case ContainerType.R:
-                        getAccessibleContainers().Add(counter + 1,new Refrigerated_Container(height, tareWeight, depth, maxPayload));
+                        counter++;
+                        getAccessibleContainers().Add(counter,new Refrigerated_Container(height, tareWeight, depth, maxPayload));
                         break;
                     case ContainerType.G:
-                        getAccessibleContainers().Add(counter + 1, new Gas_Containers(height, tareWeight, depth, maxPayload));
+                        counter++;
+                        getAccessibleContainers().Add(counter, new Gas_Containers(height, tareWeight, depth, maxPayload));
                         break;
                     case ContainerType.L:
-                        getAccessibleContainers().Add(counter + 1, new Liquid_Conteiners(height, tareWeight, depth, maxPayload));
+                        counter++;
+                        getAccessibleContainers().Add(counter, new Liquid_Conteiners(height, tareWeight, depth, maxPayload));
                         break;
                 }
             }
