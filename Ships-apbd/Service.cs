@@ -36,6 +36,7 @@ namespace Apbd_miniProject01
             decimal maxWeight = decimal.Parse(Console.ReadLine());
             Ship ship =  new Ship(shipName, maxSpeed,containerCapacity, maxWeight);
             ships.Add(counter2++, ship);
+            Console.WriteLine("Ship added");
         }
         public static void showAvailableContainers()
         {
