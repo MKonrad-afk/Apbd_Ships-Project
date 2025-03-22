@@ -165,6 +165,7 @@ namespace Apbd_miniProject01
                 if (getShips().ContainsKey(shipNumber))
                 {
                     getShips()[shipNumber].addContainerToShip();
+                    Console.WriteLine("Containers added to ship:");
                 }
                 else
                 {
@@ -241,6 +242,8 @@ namespace Apbd_miniProject01
                     {
                         destination.addContainerToShip();
                         source.removeContainer();
+                        Console.WriteLine("Transfer done");
+
                     }
                     else
                     {

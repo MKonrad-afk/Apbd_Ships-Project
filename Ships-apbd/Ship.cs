@@ -138,6 +138,7 @@ namespace Apbd_miniProject01
                 replaceContainers();
             }
             (accessibleContainers[choice1], containers[choice0]) = (containers[choice0], accessibleContainers[choice1]);
+            Console.WriteLine("The container has been replaced");
         }
 
         public void showContainers()
