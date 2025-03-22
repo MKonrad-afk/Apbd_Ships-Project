@@ -227,17 +227,45 @@ namespace Apbd_miniProject01
             int choice = int.Parse(Console.ReadLine());
             if (choice == 1)
             {
-                showAllShips();
-                Console.WriteLine("Enter ship number to view details about the container:");
-                int shipNumber = int.Parse(Console.ReadLine());
-                if (getShips().ContainsKey(shipNumber))
+                if (getShips().Count > 0)
+                {
+                    showAllShips();
+                    Console.WriteLine("Enter ship number to view details about the container:");
+                    int shipNumber = int.Parse(Console.ReadLine());
+                    if (getShips().ContainsKey(shipNumber))
+                    {
+                        Console.WriteLine("Enter container number to view it:");
+                        getShips()[shipNumber].showContainers();
+                        int containerNumber = int.Parse(Console.ReadLine());
+                        if (getShips()[shipNumber].getContainers().ContainsKey(containerNumber))
+                        {
+                            getShips()[shipNumber].getContainers()[containerNumber].showCargo();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid container number.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid ship number.");
+                    }   
+                }
+                else
+                {
+                    Console.WriteLine("There are no ships");
+                }
+            }
+            else if (choice == 2)
+            {
+                if (getAccessibleContainers().Count > 0)
                 {
                     Console.WriteLine("Enter container number to view it:");
-                    getShips()[shipNumber].showContainers();
+                    showAvailableContainers();
                     int containerNumber = int.Parse(Console.ReadLine());
-                    if (getShips()[shipNumber].getContainers().ContainsKey(containerNumber))
+                    if (getAccessibleContainers().ContainsKey(containerNumber))
                     {
-                        getShips()[shipNumber].getContainers()[containerNumber].showCargo();
+                        Console.WriteLine(getAccessibleContainers()[containerNumber].showCargo());
                     }
                     else
                     {
@@ -246,21 +274,7 @@ namespace Apbd_miniProject01
                 }
                 else
                 {
-                    Console.WriteLine("Invalid ship number.");
-                }
-            }
-            else if (choice == 2)
-            {
-                Console.WriteLine("Enter container number to view it:");
-                showAvailableContainers();
-                int containerNumber = int.Parse(Console.ReadLine());
-                if (getAccessibleContainers().ContainsKey(containerNumber))
-                {
-                    getAccessibleContainers()[containerNumber].showCargo();
-                }
-                else
-                {
-                    Console.WriteLine("Invalid container number.");
+                    Console.WriteLine("There are no accessible containers.");
                 }
             }
             else

@@ -29,7 +29,8 @@ namespace Apbd_miniProject01
                                   "\n9. Replace a container on a ship" +
                                   "\n10. Transfer a container between ships" +
                                   "\n11. Print information about a ship" +
-                                  "\n12. Exit"+
+                                  "\n12. Print information about a container" +
+                                  "\n13. Exit"+
                                   "\n--------------------------");
 
                 if (!int.TryParse(Console.ReadLine(), out var choice)) continue;
