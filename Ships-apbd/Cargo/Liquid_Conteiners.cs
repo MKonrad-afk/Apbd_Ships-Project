@@ -50,5 +50,10 @@ namespace Apbd_miniProject01
         {
             return base.ToString() +$", CargoType: {CargoType} - Liquid Container";
         }
+        
+        public override string showCargo()
+        {
+            return base.showCargo() + ": Cargo Type-" + CargoType;
+        }
     }
 }

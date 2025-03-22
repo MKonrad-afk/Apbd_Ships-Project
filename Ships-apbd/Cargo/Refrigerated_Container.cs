@@ -28,6 +28,10 @@ namespace Apbd_miniProject01
             ProductTy = new ProductType(nameOfProduct, lowestTemperature);
         }
         
+        public override string showCargo()
+        {
+            return base.showCargo() + ": Contains-"+ProductTy + ": Cargo Temperature-" + CargoTemperature;
+        }
         
     }
 

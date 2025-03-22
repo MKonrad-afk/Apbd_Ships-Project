@@ -13,7 +13,7 @@ namespace Apbd_miniProject01
 
         public override string ToString()
         {
-            return  Name + "," + LowestTemperature;
+            return  "Product- "+Name + ", keep in the lowest" + LowestTemperature;
         }
     }
 }
