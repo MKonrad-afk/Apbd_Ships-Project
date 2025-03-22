@@ -244,8 +244,8 @@ namespace Apbd_miniProject01
                         var destination = getShips()[destShip];
                         if (source.getContainers().ContainsKey(containerNumber))
                         {
-                            destination.addContainerToShip();
-                            source.removeContainer();
+                            destination.getContainers().Add(counter++, source.getContainers()[containerNumber]);
+                            source.getContainers().Remove(containerNumber);
                             Console.WriteLine("Transfer done");
 
                         }
