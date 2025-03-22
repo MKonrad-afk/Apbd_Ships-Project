@@ -136,23 +136,23 @@ namespace Apbd_miniProject01
 
         public static void unloadCargoFromContainer()
         {    
-            if (getShips().Count > 0)
+            if (getAccessibleContainers().Count > 0)
             {
-                showAllShips();
-                Console.WriteLine("Enter ship number to unload container:");
-                int shipNumber = int.Parse(Console.ReadLine());
-                if (getShips().ContainsKey(shipNumber))
+                showAvailableContainers();
+                Console.WriteLine("Enter container number to unload cargo from it:");
+                int containerNumber = int.Parse(Console.ReadLine());
+                if (getAccessibleContainers().ContainsKey(containerNumber))
                 {
-                    getShips()[shipNumber].unloadContainer();
+                   getAccessibleContainers()[containerNumber].emptyCargo();
                 }
                 else
                 {
-                    Console.WriteLine("Invalid ship number.");
+                    Console.WriteLine("Invalid container number.");
                 }
             }
             else
             {
-                Console.WriteLine("There are no ships");
+                Console.WriteLine("There are no containers");
             }
         }
         public static void loadContainersOntoShip()
