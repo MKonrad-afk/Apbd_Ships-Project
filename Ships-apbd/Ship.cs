@@ -12,6 +12,8 @@ namespace Apbd_miniProject01
         private static int counter0 = Service.getCounter();
         private static int counter1 = 0;
 
+        private decimal currentCargoWeight = 0;
+
         private string Name{get;set;}
         public double MaxSpeed { get; set; }
         public int MaxContainersCapacity { get; private set; }
@@ -49,8 +51,18 @@ namespace Apbd_miniProject01
                             int choice = int.Parse(word);
                             if (accessibleContainers.ContainsKey(choice))
                             {
-                                containers.Add(counter1++, accessibleContainers[choice]);
-                                accessibleContainers.Remove(choice);
+                                if ((currentCargoWeight + (decimal)accessibleContainers[choice].CargoWeightItself) < MaxWeight)
+                                {   
+                                    currentCargoWeight+= (decimal)accessibleContainers[choice].CargoWeightItself;
+                                    containers.Add(counter1++, accessibleContainers[choice]);
+                                    accessibleContainers.Remove(choice);
+                                    Console.WriteLine($"{accessibleContainers[choice]} - added add to a Ship");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("You cannot have more than a cargo weight");
+                                }
+
                             }
                             else
                             {
@@ -74,21 +86,6 @@ namespace Apbd_miniProject01
         }
         
 
-
-        public void unloadContainer()
-        {
-            Console.WriteLine("Info: you can unload container by typing its number from the list bellow");
-            Service.showAvailableContainers();
-            int choice = int.Parse(Console.ReadLine());
-            if (accessibleContainers.ContainsKey(choice))
-            {
-                accessibleContainers[choice].emptyCargo();
-            }
-            else
-            {
-                Console.WriteLine("Error: no accessible container found");
-            }
-        }
 
         public void removeContainer()
         {
