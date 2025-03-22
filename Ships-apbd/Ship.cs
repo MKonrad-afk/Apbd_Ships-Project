@@ -27,7 +27,7 @@ namespace Apbd_miniProject01
 
         public void addContainerToShip()
         {
-            if (MaxContainersCapacity < containers.Count)
+            if (MaxContainersCapacity > containers.Count)
             {
                 if (accessibleContainers.Count() == 0)
                 {
