@@ -27,6 +27,7 @@ namespace Apbd_miniProject01
             Console.WriteLine("Lowest temperature of this product Type");
             int lowestTemperature = int.Parse(Console.ReadLine());
             ProductTy = new ProductType(nameOfProduct, lowestTemperature);
+            CargoTemperature = lowestTemperature;
         }
         
         public override string showCargo()
