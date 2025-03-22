@@ -9,7 +9,12 @@ namespace Apbd_miniProject01
         {
             Console.Title = "Apbd_miniProject01";
 
-            Console.WriteLine("\nWelcome to Shipping World!");
+            Console.WriteLine("\nWelcome to Shipping World!\n" +
+                              "         __/___        " +
+                              "\n   _____/______|       " +
+                              "\n   \\             |      " +
+                              "\n~~~~\\______________~~~~" +
+                              "\n~~~~~~~~~~~~~~~~~~~~~~~~" );
             while (true)
             {
                 Console.WriteLine("\n--------------------------" +
@@ -47,8 +52,15 @@ namespace Apbd_miniProject01
                                           "1 -> Refrigerated Containers\n" +
                                           "2 -> Gas Containers\n" +
                                           "3 -> Liquid Containers");
+                        int choice2 = int.Parse(Console.ReadLine());
+                        if (choice2 == 1 || choice2 == 2 || choice2 == 3){
                         ContainerType containerType = (ContainerType)int.Parse(Console.ReadLine());
                         Service.createContainer(containerType);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid choice");
+                        }
                         break;
                     case 5:
                         Service.loadCargoINtoContainer();

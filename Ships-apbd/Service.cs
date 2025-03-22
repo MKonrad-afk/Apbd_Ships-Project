@@ -40,11 +40,13 @@ namespace Apbd_miniProject01
         public static void showAvailableContainers()
         {
             if (accessibleContainers.Count > 0)
-            {
+            {   
+                Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~");
                 foreach (var container in getAccessibleContainers())
                 {
                     Console.WriteLine(container.Key + ": " + container.Value);
                 }
+                Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~");
             }
             else
             {
@@ -204,16 +206,19 @@ namespace Apbd_miniProject01
 
         public static void PrintShipInfo()
         {
-            showAllShips();
-            Console.WriteLine("Enter ship number to view details:");
-            int shipNumber = int.Parse(Console.ReadLine());
-            if (getShips().ContainsKey(shipNumber))
+            if (accessibleContainers.Count > 0)
             {
-                getShips()[shipNumber].showMe();
-            }
-            else
-            {
-                Console.WriteLine("Invalid ship number.");
+                showAllShips();
+                Console.WriteLine("Enter ship number to view details:");
+                int shipNumber = int.Parse(Console.ReadLine());
+                if (getShips().ContainsKey(shipNumber))
+                {
+                    getShips()[shipNumber].showMe();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid ship number.");
+                }
             }
         }
 
