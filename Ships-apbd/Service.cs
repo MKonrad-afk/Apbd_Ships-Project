@@ -234,20 +234,28 @@ namespace Apbd_miniProject01
                 int destShip = int.Parse(Console.ReadLine());
                 if (getShips().ContainsKey(sourceShip) && getShips().ContainsKey(destShip))
                 {
-                    Console.WriteLine("Enter container number to transfer:");
-                    int containerNumber = int.Parse(Console.ReadLine());
-                    var source = getShips()[sourceShip];
-                    var destination = getShips()[destShip];
-                    if (source.getContainers().ContainsKey(containerNumber))
+                    if (getShips()[sourceShip].getContainers().Count > 0)
                     {
-                        destination.addContainerToShip();
-                        source.removeContainer();
-                        Console.WriteLine("Transfer done");
+                        Console.WriteLine("Enter container number to transfer:");
+                        getShips()[sourceShip].showContainers();
+                        int containerNumber = int.Parse(Console.ReadLine());
+                        var source = getShips()[sourceShip];
+                        var destination = getShips()[destShip];
+                        if (source.getContainers().ContainsKey(containerNumber))
+                        {
+                            destination.addContainerToShip();
+                            source.removeContainer();
+                            Console.WriteLine("Transfer done");
 
+                        }
+                        else
+                        {
+                            Console.WriteLine("Container not found in source ship.");
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("Container not found in source ship.");
+                        Console.WriteLine("No container found in source ship.");
                     }
                 }
                 else
