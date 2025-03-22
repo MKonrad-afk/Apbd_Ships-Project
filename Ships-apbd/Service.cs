@@ -273,16 +273,23 @@ namespace Apbd_miniProject01
                     int shipNumber = int.Parse(Console.ReadLine());
                     if (getShips().ContainsKey(shipNumber))
                     {
-                        Console.WriteLine("Enter container number to view it:");
-                        getShips()[shipNumber].showContainers();
-                        int containerNumber = int.Parse(Console.ReadLine());
-                        if (getShips()[shipNumber].getContainers().ContainsKey(containerNumber))
+                        if (getShips()[shipNumber].getContainers().Count > 0)
                         {
-                            getShips()[shipNumber].getContainers()[containerNumber].showCargo();
+                            Console.WriteLine("Enter container number to view it:");
+                            getShips()[shipNumber].showContainers();
+                            int containerNumber = int.Parse(Console.ReadLine());
+                            if (getShips()[shipNumber].getContainers().ContainsKey(containerNumber))
+                            {
+                                getShips()[shipNumber].getContainers()[containerNumber].showCargo();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid container number.");
+                            }
                         }
                         else
                         {
-                            Console.WriteLine("Invalid container number.");
+                            Console.WriteLine("No container found.");
                         }
                     }
                     else
