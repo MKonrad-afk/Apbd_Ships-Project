@@ -16,7 +16,11 @@ namespace Apbd_miniProject01
 
         public override string ToString()
         {
-            return base.ToString() +$", Product Type: {ProductTy}, LowestTemperature {CargoTemperature} - Liquid Container"; 
+            if (ProductTy == null)
+            {
+                return base.ToString() +$"Lowest Temperature {CargoTemperature}"; 
+            }
+            return base.ToString() +$", Product Type: {ProductTy}, Lowest Temperature {CargoTemperature}"; 
         }
         public override void loadCargo(double massKg)
         {
