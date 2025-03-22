@@ -69,30 +69,41 @@ namespace Apbd_miniProject01
         }
         
 
-        public static void createContainer(ContainerType containerType)
+        public static void createContainer()
         {
-            
-            Console.WriteLine("To Load container give me following:" +
-                              "\n Height of the container in cm:");
-            double height = double.Parse(Console.ReadLine());
-            Console.WriteLine("Depth of the container in cm:");
-            double depth = double.Parse(Console.ReadLine());
-            Console.WriteLine("Tare Weight of the container in kg:");
-            double tareWeight = double.Parse(Console.ReadLine());
-            Console.WriteLine("Max payload of the container in kg:");
-            double maxPayload = double.Parse(Console.ReadLine());
-            
-            switch (containerType)
+            Console.WriteLine("Provide me with the container Type:\n" +
+                              "1 -> Refrigerated Containers\n" +
+                              "2 -> Gas Containers\n" +
+                              "3 -> Liquid Containers");
+            int choice2 = int.Parse(Console.ReadLine());
+            if (choice2 == 1 || choice2 == 2 || choice2 == 3){ 
+                ContainerType containerType = (ContainerType)int.Parse(Console.ReadLine());
+                Console.WriteLine("To Load container give me following:" +
+                                  "\n Height of the container in cm:");
+                double height = double.Parse(Console.ReadLine());
+                Console.WriteLine("Depth of the container in cm:");
+                double depth = double.Parse(Console.ReadLine());
+                Console.WriteLine("Tare Weight of the container in kg:");
+                double tareWeight = double.Parse(Console.ReadLine());
+                Console.WriteLine("Max payload of the container in kg:");
+                double maxPayload = double.Parse(Console.ReadLine());
+                
+                switch (containerType)
+                {
+                    case ContainerType.R:
+                        getAccessibleContainers().Add(counter + 1,new Refrigerated_Container(height, tareWeight, depth, maxPayload));
+                        break;
+                    case ContainerType.G:
+                        getAccessibleContainers().Add(counter + 1, new Gas_Containers(height, tareWeight, depth, maxPayload));
+                        break;
+                    case ContainerType.L:
+                        getAccessibleContainers().Add(counter + 1, new Liquid_Conteiners(height, tareWeight, depth, maxPayload));
+                        break;
+                }
+            }
+            else
             {
-                case ContainerType.R:
-                    getAccessibleContainers().Add(counter + 1,new Refrigerated_Container(height, tareWeight, depth, maxPayload));
-                    break;
-                case ContainerType.G:
-                    getAccessibleContainers().Add(counter + 1, new Gas_Containers(height, tareWeight, depth, maxPayload));
-                    break;
-                case ContainerType.L:
-                    getAccessibleContainers().Add(counter + 1, new Liquid_Conteiners(height, tareWeight, depth, maxPayload));
-                    break;
+                Console.WriteLine("Invalid choice");
             }
         }
 

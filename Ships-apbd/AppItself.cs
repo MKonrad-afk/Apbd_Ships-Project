@@ -31,9 +31,8 @@ namespace Apbd_miniProject01
                                   "\n11. Print information about a ship" +
                                   "\n12. Exit"+
                                   "\n--------------------------");
-                
-                int choice;
-                if (!int.TryParse(Console.ReadLine(), out choice)) continue;
+
+                if (!int.TryParse(Console.ReadLine(), out var choice)) continue;
                 
                 switch (choice)
                 {
@@ -48,19 +47,7 @@ namespace Apbd_miniProject01
                         Service.showAvailableContainers();
                         break;
                     case 4:
-                        Console.WriteLine("Provide me with the container Type:\n" +
-                                          "1 -> Refrigerated Containers\n" +
-                                          "2 -> Gas Containers\n" +
-                                          "3 -> Liquid Containers");
-                        int choice2 = int.Parse(Console.ReadLine());
-                        if (choice2 == 1 || choice2 == 2 || choice2 == 3){
-                        ContainerType containerType = (ContainerType)int.Parse(Console.ReadLine());
-                        Service.createContainer(containerType);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Invalid choice");
-                        }
+                        Service.createContainer();
                         break;
                     case 5:
                         Service.loadCargoINtoContainer();
@@ -84,6 +71,8 @@ namespace Apbd_miniProject01
                         Service.PrintShipInfo();
                         break;
                     case 12:
+                        break;
+                    case 13:
                         Console.WriteLine("Exiting the application...");
                         Environment.Exit(0);
                         break;
